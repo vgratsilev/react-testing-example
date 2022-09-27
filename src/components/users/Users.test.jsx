@@ -4,8 +4,9 @@ import userEvent from '@testing-library/user-event';
 
 import axios from 'axios';
 
-import Users from './Users';
-import { renderWithRouter } from '../tests/helpers/renderWithRouter';
+// import Users from './Users';
+// import { renderWithRouter } from '../../tests/helpers/renderWithRouter';
+import { renderTestApp } from '../../tests/helpers/renderTestApp';
 
 jest.mock('axios');
 
@@ -24,7 +25,11 @@ describe('USERS async Load', () => {
         axios.get.mockReturnValue(response);
     });
     test('render', async () => {
-        renderWithRouter(<Users />);
+        //renderWithRouter(<Users />);
+        renderTestApp(null, {
+            route: '/users',
+            initialState: {},
+        });
         const users = await screen.findAllByTestId('user-item');
         expect(users.length).toBe(3);
         expect(axios.get).toBeCalledTimes(1);
@@ -32,7 +37,9 @@ describe('USERS async Load', () => {
     });
 
     test('redirect to user details', async () => {
-        renderWithRouter(<Users />);
+        //renderWithRouter(<Users />);
+        renderTestApp(null, { route: '/users', initialState: {} });
+
         const users = await screen.findAllByTestId('user-item');
         expect(users.length).toBe(3);
         userEvent.click(users[0]);
