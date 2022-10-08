@@ -69,8 +69,24 @@
         "@wdio/spec-reporter": "^7.25.0",
         "babel-plugin-named-exports-order": "^0.0.2",
         "chromedriver": "^105.0.1",
+        "loki": "^0.30.3",
         "prop-types": "^15.8.1",
         "wdio-chromedriver-service": "^7.3.2",
         "webpack": "^5.74.0"
+    },
+    "loki": {
+        "configurations": {
+            "chrome.laptop": {
+                "target": "chrome.app",
+                "width": 1366,
+                "height": 768,
+                "deviceScaleFactor": 1,
+                "mobile": false
+            },
+            "chrome.iphone7": {
+                "target": "chrome.app",
+                "preset": "iPhone 7"
+            }
+        }
     }
 }
